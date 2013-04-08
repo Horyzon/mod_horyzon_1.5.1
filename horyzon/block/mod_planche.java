@@ -108,19 +108,18 @@ import paulscode.sound.codecs.*;
 
 import java.util.Random;
 
-public class mod_champi1 extends BaseMod{
-
-public mod_champi1(){}
+public class mod_planche extends BaseMod{
+public mod_planche(){}
 
 public static BlockM block;
 
 public void load(){
 
 ModLoader.registerBlock(block);
-ModLoader.addRecipe(new ItemStack(block, 4), new Object[]{
-	"012", "345", "678", Character.valueOf('0'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('1'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('2'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('3'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('4'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('5'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('6'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('7'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('8'), new ItemStack(Block.mushroomRed, 1), 
+ModLoader.addRecipe(new ItemStack(block, 9), new Object[]{
+	"XXX", "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.planks, 1),
 });
-ModLoader.addName(block, "Bloc de champignons rouge");
+ModLoader.addName(block, "Bloc de planche lisse");
 
 }
 public String getVersion(){
@@ -130,12 +129,12 @@ return "1.0";
 
 static{
 
-block = (BlockM)(new BlockM(159).setHardness(2.0F)
+block = (BlockM)(new BlockM(803).setHardness(2.0F)
 .setResistance(10.0F)
 .setLightValue(0.0F)
-.setUnlocalizedName("Bloc de champignons rouge")
+.setUnlocalizedName("Bloc de champignons marron")
 .setLightOpacity(0)
-.setStepSound(Block.soundClothFootstep)
+.setStepSound(Block.soundWoodFootstep)
 .setCreativeTab(CreativeTabs.tabDecorations)
 );block.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
 MinecraftForge.setBlockHarvestLevel(block, "axe", 0);
@@ -156,7 +155,7 @@ boolean red = false;
 
 protected BlockM(int i)
 {
-        super(i, Material.cloth);
+        super(i, Material.wood);
 
 }
 public boolean isPoweringTo(IBlockAccess blockAccess, int i, int j, int k, int l){
@@ -189,12 +188,12 @@ return gor;
 
 public void registerIcons(IconRegister par1IconRegister)
 {
-this.gor = par1IconRegister.registerIcon("mushroom_skin_red");
-this.dol = par1IconRegister.registerIcon("mushroom_skin_red");
-this.st1 = par1IconRegister.registerIcon("mushroom_skin_red");
-this.st2 = par1IconRegister.registerIcon("mushroom_skin_red");
-this.st3 = par1IconRegister.registerIcon("mushroom_skin_red");
-this.st4 = par1IconRegister.registerIcon("mushroom_skin_red");
+this.gor = par1IconRegister.registerIcon("piston_top");
+this.dol = par1IconRegister.registerIcon("piston_top");
+this.st1 = par1IconRegister.registerIcon("piston_top");
+this.st2 = par1IconRegister.registerIcon("piston_top");
+this.st3 = par1IconRegister.registerIcon("piston_top");
+this.st4 = par1IconRegister.registerIcon("piston_top");
 }
 public int getRenderType(){
 return 0;

@@ -1,4 +1,4 @@
-package horyzon.item;
+package horyzon.armor;
 
 import cpw.*;
 import cpw.mods.*;
@@ -101,59 +101,53 @@ import net.minecraftforge.event.world.*;
 import net.minecraftforge.liquids.*;
 import net.minecraftforge.oredict.*;
 import net.minecraftforge.transformers.*;
-import paulscode.*;
-import paulscode.sound.*;
+import paulscode.*;import paulscode.sound.*;
 import paulscode.sound.codecs.*;
-
 import java.util.Random;
 
-public class mod_diamonddust extends BaseMod{
+public class mod_Oarmor extends BaseMod{
 
-public mod_diamonddust(){}
+public mod_Oarmor(){}
 
-public static Item block;public void load(){
+public static Item helmet;
+public static Item body;
+public static Item legs;
+public static Item boots;
+public void load(){
+ModLoader.addName(helmet, "Armure en obsidienne Helmet");
+ModLoader.addName(body, "Armure en obsidienne Body");
+ModLoader.addName(legs, "Armure en obsidienne Legs");
+ModLoader.addName(boots, "Armure en obsidienne Boots");
+ModLoader.addRecipe(new ItemStack(helmet, 1), new Object[]{
+	"0XX", "3XX", "XXX", Character.valueOf('0'), new ItemStack(Block.stone, 1), Character.valueOf('3'), new ItemStack(Block.stone, 1), 
+});
+ModLoader.addRecipe(new ItemStack(body, 1), new Object[]{
+	"X1X", "X4X", "XXX", Character.valueOf('1'), new ItemStack(Block.stone, 1), Character.valueOf('4'), new ItemStack(Block.stone, 1), 
+});
+ModLoader.addRecipe(new ItemStack(legs, 1), new Object[]{
+	"XX2", "XX5", "XXX", Character.valueOf('2'), new ItemStack(Block.stone, 1), Character.valueOf('5'), new ItemStack(Block.stone, 1), 
+});
+ModLoader.addRecipe(new ItemStack(boots, 1), new Object[]{
+	"XXX", "XXX", "6X8", Character.valueOf('6'), new ItemStack(Block.stone, 1), Character.valueOf('8'), new ItemStack(Block.stone, 1), 
+});
 
-ModLoader.addSmelting(Item.diamond.itemID, new ItemStack(block), 5.0f);
-ModLoader.addName(block, "Poudre de diamant");}
+MinecraftForgeClient.preloadTexture("/");
+helmet.setCreativeTab(CreativeTabs.tabCombat);
+body.setCreativeTab(CreativeTabs.tabCombat);
+legs.setCreativeTab(CreativeTabs.tabCombat);
+boots.setCreativeTab(CreativeTabs.tabCombat);
+}
 public String getVersion(){
 return "1.0";
 }
 
 static{
-block = (new Itemdiamonddust(154));
+EnumArmorMaterial enuma = EnumHelper.addArmorMaterial("F", 30, new int[] {10, 10, 10, 10}, 15);
+helmet = (new ItemArmor(1003, enuma, ModLoader.addArmor("obsidian_1"), 0)).setUnlocalizedName("helmetCloth");helmet.setMaxStackSize(1);
+body = (new ItemArmor(1000, enuma, ModLoader.addArmor("obsidian_1"), 1)).setUnlocalizedName("chestplateCloth");body.setMaxStackSize(1);
+legs = (new ItemArmor(1001, enuma, ModLoader.addArmor("obsidian_1"), 2)).setUnlocalizedName("leggingsCloth");legs.setMaxStackSize(1);
+boots = (new ItemArmor(1002, enuma, ModLoader.addArmor("obsidian_1"), 3)).setUnlocalizedName("bootsCloth");boots.setMaxStackSize(1);
 
 }
 
-static class Itemdiamonddust extends Item{
-
-public Itemdiamonddust(int par1){
-super(par1);
-setMaxDamage(0);
-maxStackSize = 64;
-setUnlocalizedName("diamonddust");setCreativeTab(CreativeTabs.tabMaterials);
 }
-public int getItemEnchantability()
-{
-    return 0;
-}
-public int getMaxItemUseDuration(ItemStack par1ItemStack)
-{
-    return 0;
-}
-public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
-{
-    return 1.0F;
-}
-public int getDamageVsEntity(Entity par1Entity)
-{
-    return 0;
-}
-public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack)
-{
-    return true;
-}
-
-
-
-
-}}

@@ -1,5 +1,4 @@
 package horyzon.item;
-
 import cpw.*;
 import cpw.mods.*;
 import cpw.mods.fml.*;
@@ -20,7 +19,7 @@ import cpw.mods.fml.common.toposort.*;
 import cpw.mods.fml.common.versioning.*;
 import cpw.mods.fml.relauncher.*;
 import cpw.mods.fml.server.*;
-import cpw.mods.fml.common.registry.GameRegistry;
+import horyzon.item.mod_diamonddust.Itemdiamonddust;
 import ibxm.*;
 import net.*;
 import net.minecraft.*;
@@ -105,38 +104,31 @@ import net.minecraftforge.transformers.*;
 import paulscode.*;
 import paulscode.sound.*;
 import paulscode.sound.codecs.*;
-import horyzon.item.*;
 
+public class mod_Oingot extends BaseMod{
 
-import java.util.Random;
-
-public class mod_obsidiams extends BaseMod{
-
-public mod_obsidiams(){}
+public mod_Oingot(){}
 
 public static Item block;public void load(){
-ModLoader.addSmelting(mod_obsidiams1.block.itemID, new ItemStack(block), 0.7F);
-ModLoader.addName(block, "Lingot d'Obsidiams");}
+
+ModLoader.addSmelting(Item.diamond.itemID, new ItemStack(block), 5.0f);
+ModLoader.addName(block, "Poudre de diamant");}
 public String getVersion(){
 return "1.0";
 }
 
 static{
-block = (new Itemobsidiamsingot(157));
+block = (new ItemOingot(704));
 
 }
 
-static class Itemobsidiamsingot extends Item{
+static class ItemOingot extends Item{
 
-public Itemobsidiamsingot(int par1){
+public ItemOingot(int par1){
 super(par1);
 setMaxDamage(0);
 maxStackSize = 64;
-setUnlocalizedName("obsidiams1");setCreativeTab(CreativeTabs.tabMaterials);
-}
-public boolean hasEffect(ItemStack par1ItemStack)
-{
-    return true;
+setUnlocalizedName("Oingot");setCreativeTab(CreativeTabs.tabMaterials);
 }
 public int getItemEnchantability()
 {
@@ -163,3 +155,5 @@ public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack)
 
 
 }}
+
+

@@ -1,4 +1,4 @@
-package horyzon.block;
+package horyzon.item;
 
 import cpw.*;
 import cpw.mods.*;
@@ -20,6 +20,7 @@ import cpw.mods.fml.common.toposort.*;
 import cpw.mods.fml.common.versioning.*;
 import cpw.mods.fml.relauncher.*;
 import cpw.mods.fml.server.*;
+import cpw.mods.fml.common.registry.GameRegistry;
 import ibxm.*;
 import net.*;
 import net.minecraft.*;
@@ -37,7 +38,6 @@ import net.minecraft.client.particle.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.culling.*;
 import net.minecraft.client.renderer.entity.*;
-import net.minecraft.client.renderer.texture.*;
 import net.minecraft.client.renderer.tileentity.*;
 import net.minecraft.client.settings.*;
 import net.minecraft.client.texturepacks.*;
@@ -106,106 +106,60 @@ import paulscode.*;
 import paulscode.sound.*;
 import paulscode.sound.codecs.*;
 
+
 import java.util.Random;
 
-public class mod_planche extends BaseMod{
-public mod_planche(){}
+public class mod_obsidiams1 extends BaseMod{
 
-public static BlockM block;
+public mod_obsidiams1(){}
 
-public void load(){
-
-ModLoader.registerBlock(block);
-ModLoader.addRecipe(new ItemStack(block, 9), new Object[]{
-	"XXX", "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.planks, 1),
-});
-ModLoader.addName(block, "Bloc de planche lisse");
-
-}
+public static Item block;public void load(){
+ModLoader.addShapelessRecipe(new ItemStack(block, 1), new Object[]{
+new ItemStack(mod_obsidust.block, 1),(mod_diamonddust.block) 
+});ModLoader.addName(block, "Poudre d'Obsisiams");}
 public String getVersion(){
 return "1.0";
 }
 
-
 static{
+block = (new Itemobsidiams(702));
 
-block = (BlockM)(new BlockM(160).setHardness(2.0F)
-.setResistance(10.0F)
-.setLightValue(0.0F)
-.setUnlocalizedName("Bloc de champignons marron")
-.setLightOpacity(0)
-.setStepSound(Block.soundWoodFootstep)
-.setCreativeTab(CreativeTabs.tabDecorations)
-);block.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
-MinecraftForge.setBlockHarvestLevel(block, "axe", 0);
 }
 
-static class BlockM extends Block
+static class Itemobsidiams extends Item{
+
+public Itemobsidiams(int par1){
+super(par1);
+setMaxDamage(0);
+maxStackSize = 64;
+setUnlocalizedName("obsidiams");setCreativeTab(CreativeTabs.tabMaterials);
+}
+public boolean hasEffect(ItemStack par1ItemStack)
 {
-
-int a1 = 0,a2 = 0,a3 = 0,a4 = 0,a5 = 0,a6 = 0;
-
-Icon gor = null, dol = null, st1 = null, st2 = null, st3 = null, st4 = null;
-
-boolean red = false;
-
-
-
-
-
-protected BlockM(int i)
+    return true;
+}
+public int getItemEnchantability()
 {
-        super(i, Material.wood);
-
+    return 0;
 }
-public boolean isPoweringTo(IBlockAccess blockAccess, int i, int j, int k, int l){
-return red;
-}
-public Icon getBlockTextureFromSideAndMetadata(int i, int par2){
-
-if (i == 0)
-return gor;
-
-else if (i == 1)
-return dol;
-
-else if (i == 2)
-return st1;
-
-else if (i == 3)
-return st2;
-
-else if (i == 4)
-return st4;
-
-else if (i == 5)
-return st3;
-
-else
-return gor;
-
-}
-
-public void registerIcons(IconRegister par1IconRegister)
+public int getMaxItemUseDuration(ItemStack par1ItemStack)
 {
-this.gor = par1IconRegister.registerIcon("piston_top");
-this.dol = par1IconRegister.registerIcon("piston_top");
-this.st1 = par1IconRegister.registerIcon("piston_top");
-this.st2 = par1IconRegister.registerIcon("piston_top");
-this.st3 = par1IconRegister.registerIcon("piston_top");
-this.st4 = par1IconRegister.registerIcon("piston_top");
+    return 0;
 }
-public int getRenderType(){
-return 0;
-}
-public int tickRate()
+public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
 {
-    return 10;
+    return 1.0F;
+}
+public int getDamageVsEntity(Entity par1Entity)
+{
+    return 0;
+}
+public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack)
+{
+    return true;
 }
 
-public int quantityDropped(Random par1Random){
-return 1;
-}
 
-}
-}
+
+
+}}

@@ -1,4 +1,4 @@
-package horyzon.tool;
+package horyzon.block;
 
 import cpw.*;
 import cpw.mods.*;
@@ -37,6 +37,7 @@ import net.minecraft.client.particle.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.culling.*;
 import net.minecraft.client.renderer.entity.*;
+import net.minecraft.client.renderer.texture.*;
 import net.minecraft.client.renderer.tileentity.*;
 import net.minecraft.client.settings.*;
 import net.minecraft.client.texturepacks.*;
@@ -104,27 +105,108 @@ import net.minecraftforge.transformers.*;
 import paulscode.*;
 import paulscode.sound.*;
 import paulscode.sound.codecs.*;
-import horyzon.*;
-import horyzon.item.mod_obsidiams;
 
 import java.util.Random;
 
-public class mod_pickOD extends BaseMod{
+public class mod_champi2 extends BaseMod{
 
-public mod_pickOD(){}
+public mod_champi2(){}
 
-public static Item block;
+public static BlockM block;
+
 public void load(){
-ModLoader.addRecipe(new ItemStack(block, 1), new Object[]{
-	"AAA", "X4X", "X7X", Character.valueOf('A'), new ItemStack(mod_obsidiams.block, 1), Character.valueOf('1'), new ItemStack(Item.blazeRod, 1), Character.valueOf('7'), new ItemStack(Item.blazeRod, 1), 
-});ModLoader.addName(block, "Pioche en Obsidiams");}
+
+ModLoader.registerBlock(block);
+ModLoader.addRecipe(new ItemStack(block, 4), new Object[]{
+	"012", "345", "678", Character.valueOf('0'), new ItemStack(Block.mushroomBrown, 1), Character.valueOf('1'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('2'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('3'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('4'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('5'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('6'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('7'), new ItemStack(Block.mushroomRed, 1), Character.valueOf('8'), new ItemStack(Block.mushroomRed, 1), 
+});
+ModLoader.addName(block, "Bloc de champignons marron");
+
+}
 public String getVersion(){
 return "1.0";
 }
 
+
 static{
-EnumToolMaterial enumt = EnumHelper.addToolMaterial("PICKOD", 4, 2048, 5F, 5, 15);block = (Item)(new ItemPickaxe(500, enumt)).setUnlocalizedName("pickp");
-MinecraftForge.setToolClass(block, "pickaxe", 4);
+
+block = (BlockM)(new BlockM(801).setHardness(2.0F)
+.setResistance(10.0F)
+.setLightValue(0.0F)
+.setUnlocalizedName("Bloc de champignons rouge")
+.setLightOpacity(0)
+.setStepSound(Block.soundClothFootstep)
+.setCreativeTab(CreativeTabs.tabDecorations)
+);block.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
+MinecraftForge.setBlockHarvestLevel(block, "axe", 0);
 }
 
+static class BlockM extends Block
+{
+
+int a1 = 0,a2 = 0,a3 = 0,a4 = 0,a5 = 0,a6 = 0;
+
+Icon gor = null, dol = null, st1 = null, st2 = null, st3 = null, st4 = null;
+
+boolean red = false;
+
+
+
+
+
+protected BlockM(int i)
+{
+        super(i, Material.cloth);
+
+}
+public boolean isPoweringTo(IBlockAccess blockAccess, int i, int j, int k, int l){
+return red;
+}
+public Icon getBlockTextureFromSideAndMetadata(int i, int par2){
+
+if (i == 0)
+return gor;
+
+else if (i == 1)
+return dol;
+
+else if (i == 2)
+return st1;
+
+else if (i == 3)
+return st2;
+
+else if (i == 4)
+return st4;
+
+else if (i == 5)
+return st3;
+
+else
+return gor;
+
+}
+
+public void registerIcons(IconRegister par1IconRegister)
+{
+this.gor = par1IconRegister.registerIcon("mushroom_skin_brown");
+this.dol = par1IconRegister.registerIcon("mushroom_skin_brown");
+this.st1 = par1IconRegister.registerIcon("mushroom_skin_brown");
+this.st2 = par1IconRegister.registerIcon("mushroom_skin_brown");
+this.st3 = par1IconRegister.registerIcon("mushroom_skin_brown");
+this.st4 = par1IconRegister.registerIcon("mushroom_skin_brown");
+}
+public int getRenderType(){
+return 0;
+}
+public int tickRate()
+{
+    return 10;
+}
+
+public int quantityDropped(Random par1Random){
+return 1;
+}
+
+}
 }

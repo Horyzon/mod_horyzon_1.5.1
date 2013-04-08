@@ -1,4 +1,4 @@
-package horyzon.item;
+package horyzon.tool;
 
 import cpw.*;
 import cpw.mods.*;
@@ -104,56 +104,27 @@ import net.minecraftforge.transformers.*;
 import paulscode.*;
 import paulscode.sound.*;
 import paulscode.sound.codecs.*;
+import horyzon.*;
+import horyzon.item.mod_obsidiams;
 
 import java.util.Random;
 
-public class mod_obsidust extends BaseMod{
+public class mod_pickOD extends BaseMod{
 
-public mod_obsidust(){}
+public mod_pickOD(){}
 
-public static Item block;public void load(){
-
-ModLoader.addSmelting(Block.obsidian.blockID, new ItemStack(block), 5.0f);
-ModLoader.addName(block, "Poudre d'obsidienne");}
+public static Item block;
+public void load(){
+ModLoader.addRecipe(new ItemStack(block, 1), new Object[]{
+	"AAA", "X4X", "X7X", Character.valueOf('A'), new ItemStack(mod_obsidiams.block, 1), Character.valueOf('1'), new ItemStack(Item.blazeRod, 1), Character.valueOf('7'), new ItemStack(Item.blazeRod, 1), 
+});ModLoader.addName(block, "Pioche en Obsidiams");}
 public String getVersion(){
 return "1.0";
 }
 
 static{
-block = (new Itemobsidust(153));
-
+EnumToolMaterial enumt = EnumHelper.addToolMaterial("PICKOD", 4, 2048, 5F, 5, 15);block = (Item)(new ItemPickaxe(601, enumt)).setUnlocalizedName("pickp");
+MinecraftForge.setToolClass(block, "pickaxe", 4);
 }
 
-static class Itemobsidust extends Item{
-
-public Itemobsidust(int par1){
-super(par1);
-setMaxDamage(0);
-maxStackSize = 64;
-setUnlocalizedName("obsidust");setCreativeTab(CreativeTabs.tabMaterials);
 }
-public int getItemEnchantability()
-{
-    return 0;
-}
-public int getMaxItemUseDuration(ItemStack par1ItemStack)
-{
-    return 0;
-}
-public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
-{
-    return 1.0F;
-}
-public int getDamageVsEntity(Entity par1Entity)
-{
-    return 0;
-}
-public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack)
-{
-    return true;
-}
-
-
-
-
-}}

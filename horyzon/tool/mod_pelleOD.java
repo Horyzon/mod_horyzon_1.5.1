@@ -122,7 +122,7 @@ return "1.0";
 }
 
 static{
-EnumToolMaterial enumt = EnumHelper.addToolMaterial("pellep", 5, 2000, 5F, 5, 15);block = (Item)(new ItemSpade(154, enumt)).setUnlocalizedName("pelleOD");
+EnumToolMaterial enumt = EnumHelper.addToolMaterial("pellep", 5, 2000, 5F, 5, 15);block = (Item)(new ItemSpade(804, enumt)).setUnlocalizedName("pelleOD");
 
 }
 

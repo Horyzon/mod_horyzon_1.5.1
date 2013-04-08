@@ -20,7 +20,6 @@ import cpw.mods.fml.common.toposort.*;
 import cpw.mods.fml.common.versioning.*;
 import cpw.mods.fml.relauncher.*;
 import cpw.mods.fml.server.*;
-import cpw.mods.fml.common.registry.GameRegistry;
 import ibxm.*;
 import net.*;
 import net.minecraft.*;
@@ -106,37 +105,32 @@ import paulscode.*;
 import paulscode.sound.*;
 import paulscode.sound.codecs.*;
 
-
 import java.util.Random;
 
-public class mod_obsidiams1 extends BaseMod{
+public class mod_obsidust extends BaseMod{
 
-public mod_obsidiams1(){}
+public mod_obsidust(){}
 
 public static Item block;public void load(){
-ModLoader.addShapelessRecipe(new ItemStack(block, 1), new Object[]{
-new ItemStack(mod_obsidust.block, 1),(mod_diamonddust.block) 
-});ModLoader.addName(block, "Poudre d'Obsisiams");}
+
+ModLoader.addSmelting(Block.obsidian.blockID, new ItemStack(block), 5.0f);
+ModLoader.addName(block, "Poudre d'obsidienne");}
 public String getVersion(){
 return "1.0";
 }
 
 static{
-block = (new Itemobsidiams(155));
+block = (new Itemobsidust(703));
 
 }
 
-static class Itemobsidiams extends Item{
+static class Itemobsidust extends Item{
 
-public Itemobsidiams(int par1){
+public Itemobsidust(int par1){
 super(par1);
 setMaxDamage(0);
 maxStackSize = 64;
-setUnlocalizedName("obsidiams");setCreativeTab(CreativeTabs.tabMaterials);
-}
-public boolean hasEffect(ItemStack par1ItemStack)
-{
-    return true;
+setUnlocalizedName("obsidust");setCreativeTab(CreativeTabs.tabMaterials);
 }
 public int getItemEnchantability()
 {
