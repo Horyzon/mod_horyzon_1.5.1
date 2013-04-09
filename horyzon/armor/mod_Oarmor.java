@@ -20,6 +20,7 @@ import cpw.mods.fml.common.toposort.*;
 import cpw.mods.fml.common.versioning.*;
 import cpw.mods.fml.relauncher.*;
 import cpw.mods.fml.server.*;
+import horyzon.item.mod_Oingot;
 import ibxm.*;
 import net.*;
 import net.minecraft.*;
@@ -114,21 +115,21 @@ public static Item body;
 public static Item legs;
 public static Item boots;
 public void load(){
-ModLoader.addName(helmet, "Armure en obsidienne Helmet");
-ModLoader.addName(body, "Armure en obsidienne Body");
-ModLoader.addName(legs, "Armure en obsidienne Legs");
-ModLoader.addName(boots, "Armure en obsidienne Boots");
+ModLoader.addName(helmet, "Casque d'obsidienne");
+ModLoader.addName(body, "Plastron d'obsidienne");
+ModLoader.addName(legs, "Pantalon d'obsidienne");
+ModLoader.addName(boots, "Bottes d'obsidienne");
 ModLoader.addRecipe(new ItemStack(helmet, 1), new Object[]{
-	"0XX", "3XX", "XXX", Character.valueOf('0'), new ItemStack(Block.stone, 1), Character.valueOf('3'), new ItemStack(Block.stone, 1), 
+	"000", "0X0", "XXX", Character.valueOf('0'), new ItemStack(mod_Oingot.block, 1),
 });
 ModLoader.addRecipe(new ItemStack(body, 1), new Object[]{
-	"X1X", "X4X", "XXX", Character.valueOf('1'), new ItemStack(Block.stone, 1), Character.valueOf('4'), new ItemStack(Block.stone, 1), 
+	"1X1", "111", "111", Character.valueOf('1'), new ItemStack(mod_Oingot.block, 1), 
 });
 ModLoader.addRecipe(new ItemStack(legs, 1), new Object[]{
-	"XX2", "XX5", "XXX", Character.valueOf('2'), new ItemStack(Block.stone, 1), Character.valueOf('5'), new ItemStack(Block.stone, 1), 
+	"222", "2X2", "2X2", Character.valueOf('2'), new ItemStack(mod_Oingot.block, 1),
 });
 ModLoader.addRecipe(new ItemStack(boots, 1), new Object[]{
-	"XXX", "XXX", "6X8", Character.valueOf('6'), new ItemStack(Block.stone, 1), Character.valueOf('8'), new ItemStack(Block.stone, 1), 
+	"XXX", "6X6", "6X6", Character.valueOf('6'), new ItemStack(mod_Oingot.block, 1),
 });
 
 MinecraftForgeClient.preloadTexture("/");
@@ -143,10 +144,10 @@ return "1.0";
 
 static{
 EnumArmorMaterial enuma = EnumHelper.addArmorMaterial("F", 30, new int[] {10, 10, 10, 10}, 15);
-helmet = (new ItemArmor(1003, enuma, ModLoader.addArmor("obsidian_1"), 0)).setUnlocalizedName("helmetCloth");helmet.setMaxStackSize(1);
-body = (new ItemArmor(1000, enuma, ModLoader.addArmor("obsidian_1"), 1)).setUnlocalizedName("chestplateCloth");body.setMaxStackSize(1);
-legs = (new ItemArmor(1001, enuma, ModLoader.addArmor("obsidian_1"), 2)).setUnlocalizedName("leggingsCloth");legs.setMaxStackSize(1);
-boots = (new ItemArmor(1002, enuma, ModLoader.addArmor("obsidian_1"), 3)).setUnlocalizedName("bootsCloth");boots.setMaxStackSize(1);
+helmet = (new ItemArmor(1003, enuma, ModLoader.addArmor("Obsidian"), 0)).setUnlocalizedName("helmet_obsi");helmet.setMaxStackSize(1);
+body = (new ItemArmor(1000, enuma, ModLoader.addArmor("Obsidian"), 1)).setUnlocalizedName("chest_obsi");body.setMaxStackSize(1);
+legs = (new ItemArmor(1001, enuma, ModLoader.addArmor("Obsidian"), 2)).setUnlocalizedName("leggings_obsi");legs.setMaxStackSize(1);
+boots = (new ItemArmor(1002, enuma, ModLoader.addArmor("Obsidian"), 3)).setUnlocalizedName("boots_obsi");boots.setMaxStackSize(1);
 
 }
 
